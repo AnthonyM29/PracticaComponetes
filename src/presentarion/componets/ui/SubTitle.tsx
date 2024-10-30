@@ -1,31 +1,25 @@
 import React, {useContext} from 'react';
 import {Text} from 'react-native';
 import {globalStyles} from '../../screens/theme/theme';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {ThemeContext} from '../../context/ThemeContext';
 
 interface Props {
   text: string;
   safe?: boolean;
-  white?: boolean;
 }
 
-const Title = ({text, safe, white}: Props) => {
-  const {top} = useSafeAreaInsets();
-
+const SubTitle = ({text, safe = false}: Props) => {
   const {colors} = useContext(ThemeContext);
-
   return (
     <Text
       style={{
-        ...globalStyles.title,
+        ...globalStyles.subTitle,
         marginTop: safe ? top : 0,
-        marginBottom: 10,
-        color: white ? 'white' : colors.text,
+        color: colors.text,
       }}>
       {text}
     </Text>
   );
 };
 
-export default Title;
+export default SubTitle;

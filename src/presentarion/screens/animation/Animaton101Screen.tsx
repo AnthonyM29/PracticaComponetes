@@ -1,14 +1,9 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  Pressable,
-  StyleSheet,
-  Animated,
-  Easing,
-} from 'react-native';
+import React, {useContext} from 'react';
+import {Text, Pressable, StyleSheet, Animated, Easing} from 'react-native';
 import {colors} from '../theme/theme';
 import {useAnimation} from '../../hooks/useAnimation';
+import CustonView from '../../componets/ui/CustonView';
+import {ThemeContext} from '../../context/ThemeContext';
 
 const Animaton101Screen = () => {
   const {
@@ -18,9 +13,10 @@ const Animaton101Screen = () => {
     animatedTop,
     startMovingTopPosition,
   } = useAnimation();
+  const {colors} = useContext(ThemeContext);
 
   return (
-    <View style={styles.container}>
+    <CustonView style={styles.container}>
       <Animated.View
         style={[
           styles.plupleBox,
@@ -37,12 +33,12 @@ const Animaton101Screen = () => {
           });
         }}
         style={{marginTop: 10}}>
-        <Text>FadeIn</Text>
+        <Text style={{color: colors.text}}>FadeIn</Text>
       </Pressable>
       <Pressable onPress={() => fadeOut({})} style={{marginTop: 10}}>
-        <Text>FadeIOut</Text>
+        <Text style={{color: colors.text}}>FadeIOut</Text>
       </Pressable>
-    </View>
+    </CustonView>
   );
 };
 
